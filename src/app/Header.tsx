@@ -2,12 +2,12 @@ import { TypeAnimation } from "react-type-animation";
 
 export default function Header() {
   return (
-    <header className="bg-slate-900 text-white flex flex-col justify-between">
+    <header className="text-white flex flex-col justify-between">
       <div>
         <h1 className="text-4xl font-bold pb-4">Win Tongtawee</h1>
-        <h1 className="mb-4 text-3xl font-semibold text-white">
+        <h1 className="mb-4 text-2xl font-semibold text-white">
           <span>Hi, I am </span>
-          <span className="text-[#64ffda]">
+          <span className="text-[#A755C2]">
             <TypeAnimation
               sequence={[
                 "Win",
@@ -18,7 +18,9 @@ export default function Header() {
                 1000,
                 " a gamer",
                 1000,
-                " searching for Fall 2024 Positions",
+                " searching for Fall 2024 Roles",
+                1000,
+                " always learning :)",
                 1000,
               ]}
               wrapper="span"
@@ -73,7 +75,7 @@ export default function Header() {
         </nav>
       </div>
       <div className="p-4">
-        <p>Additional Sidebar Content</p>
+        <p>Social Buttons Here</p>
       </div>
     </header>
   );
