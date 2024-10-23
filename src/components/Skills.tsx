@@ -1,0 +1,108 @@
+import React from 'react';
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Icon } from '@iconify/react';
+import swiftIcon from '@iconify/icons-logos/swift';
+import javaIcon from '@iconify/icons-logos/java';
+import firebaseIcon from '@iconify/icons-logos/firebase';
+import typescriptIcon from '@iconify/icons-logos/typescript-icon';
+import javascriptIcon from '@iconify/icons-logos/javascript';
+import reactIcon from '@iconify/icons-logos/react';
+import nodejsIcon from '@iconify/icons-logos/nodejs-icon';
+import htmlIcon from '@iconify/icons-vscode-icons/file-type-html';
+import cssIcon from '@iconify/icons-vscode-icons/file-type-css';
+import tailwindIcon from '@iconify/icons-vscode-icons/file-type-tailwind';
+import bootstrapIcon from '@iconify/icons-logos/bootstrap';
+import sqlIcon from '@iconify/icons-skill-icons/mysql-dark';
+import linuxIcon from '@iconify/icons-logos/linux-tux';
+import latexDark from '@iconify/icons-skill-icons/latex-dark';
+import pythonIcon from '@iconify/icons-logos/python';
+import objcIcon from '@iconify/icons-vscode-icons/file-type-objectivec';
+import verilogIcon from '@iconify/icons-vscode-icons/file-type-verilog';
+import flaskIcon from '@iconify/icons-skill-icons/flask-light';
+import mongoDBIcon from '@iconify/icons-vscode-icons/file-type-mongo';
+import postgresIcon from '@iconify/icons-logos/postgresql';
+import supabaseIcon from '@iconify/icons-devicon/supabase';
+import pandasIcon from '@iconify/icons-devicon/pandas';
+import numpyIcon from '@iconify/icons-logos/numpy';
+import tensorflowIcon from '@iconify/icons-logos/tensorflow';
+import pytorchIcon from '@iconify/icons-devicon/pytorch';
+import sklearnIcon from '@iconify/icons-devicon/scikitlearn';
+import dockerIcon from '@iconify/icons-logos/docker-icon';
+import lispIcon from '@iconify/icons-file-icons/common-lisp';
+import nextIcon from '@iconify/icons-skill-icons/nextjs-dark';
+import vueIcon from '@iconify/icons-logos/vue';
+
+export const languages = [
+  { icon: swiftIcon, label: 'Swift' },
+  { icon: pythonIcon, label: 'Python' },
+  { icon: typescriptIcon, label: 'TypeScript' },
+  { icon: javascriptIcon, label: 'JavaScript' },
+  { icon: javaIcon, label: 'Java' },
+  { icon: objcIcon, label: 'Obj-C' },
+  { icon: htmlIcon, label: 'HTML' },
+  { icon: cssIcon, label: 'CSS' },
+  { icon: verilogIcon, label: 'Verilog' },
+  { icon: lispIcon, label: 'Lisp' },
+];
+
+export const frameworksAndTools = [
+  { icon: reactIcon, label: 'React' },
+  { icon: nextIcon, label: 'Next.js' },
+  { icon: vueIcon, label: 'Vue.js' },
+  { icon: nodejsIcon, label: 'Node.js' },
+  { icon: tailwindIcon, label: 'Tailwind' },
+  { icon: bootstrapIcon, label: 'Bootstrap' },
+  { icon: flaskIcon, label: 'Flask' },
+  { icon: mongoDBIcon, label: 'MongoDB' },
+  { icon: firebaseIcon, label: 'Firebase' },
+  { icon: supabaseIcon, label: 'Supabase' },
+  { icon: postgresIcon, label: 'PostgreSQL' },
+  { icon: sqlIcon, label: 'SQL' },
+  { icon: pandasIcon, label: 'Pandas' },
+  { icon: pytorchIcon, label: 'PyTorch' },
+  { icon: numpyIcon, label: 'NumPy' },
+  { icon: tensorflowIcon, label: 'TensorFlow' },
+  { icon: sklearnIcon, label: 'SKlearn' },
+  { icon: dockerIcon, label: 'Docker' },
+  { icon: latexDark, label: 'LaTeX' },
+  { icon: linuxIcon, label: 'Linux' },
+];
+
+const Skills: React.FC = () => {
+  return (
+    <div>
+      <div className="w-full border-t container max-w-7xl mx-auto" />
+      <Card className="text-white container max-w-7xl mx-auto">
+        <CardHeader>
+          <h2 className="text-center text-3xl font-semibold mb-6">Technical Skills</h2>
+        </CardHeader>
+        <CardContent>
+          <h3 className="text-2xl font-semibold mb-8">Languages</h3>
+          <div className="grid lg:grid-cols-10 sm:grid-cols-5 grid-cols-2 gap-6 justify-items-center">
+            {languages.map((skill, index) => (
+              <div key={index} className="flex flex-col items-center group">
+              <Icon icon={skill.icon} className="w-12 h-12 mb-2 group-hover:scale-110 transition-transform duration-300" />
+              <span className="text-lg opacity-0 transform translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                {skill.label}
+              </span>
+            </div>
+            ))}
+          </div>
+          <h3 className="text-2xl font-semibold mb-8">Libraries & Tools</h3>
+          <div className="grid lg:grid-cols-10 sm:grid-cols-5 grid-cols-2 gap-6 justify-items-center">
+            {frameworksAndTools.map((skill, index) => (
+              <div key={index} className="flex flex-col items-center group">
+              <Icon icon={skill.icon} className="w-12 h-12 mb-2 group-hover:scale-110 transition-transform duration-300" />
+              <span className="text-lg opacity-0 transform translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                {skill.label}
+              </span>
+            </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
+
+export default Skills;
