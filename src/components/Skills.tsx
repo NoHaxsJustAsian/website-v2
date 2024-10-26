@@ -1,3 +1,4 @@
+// Skills.tsx
 import React from 'react';
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Icon } from '@iconify/react';
@@ -71,32 +72,45 @@ export const frameworksAndTools = [
 const Skills: React.FC = () => {
   return (
     <div>
-      <div className="w-full border-t container max-w-7xl mx-auto" />
+      <div className="w-full container max-w-7xl mx-auto" />
       <Card className="text-white container max-w-7xl mx-auto">
-        <CardHeader>
-          <h2 className="text-center text-3xl font-semibold mb-6">Technical Skills</h2>
+        <CardHeader className="text-4xl font-bold mb-4 text-white">
+          Technical Skills
         </CardHeader>
         <CardContent>
-          <h3 className="text-2xl font-semibold mb-8">Languages</h3>
+          {/* Section for Languages with line and text above */}
+          <div className="relative mb-8">
+            <h3 className="text-2xl font-semibold relative z-10 inline-block bg-black px-4">
+              Languages
+            </h3>
+            <div className="absolute inset-0 top-1/2 w-full border-t border-gray-700"></div>
+          </div>
           <div className="grid lg:grid-cols-10 sm:grid-cols-5 grid-cols-2 gap-6 justify-items-center">
             {languages.map((skill, index) => (
               <div key={index} className="flex flex-col items-center group">
-              <Icon icon={skill.icon} className="w-12 h-12 mb-2 group-hover:scale-110 transition-transform duration-300" />
-              <span className="text-lg opacity-0 transform translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                {skill.label}
-              </span>
-            </div>
+                <Icon icon={skill.icon} className="w-12 h-12 mb-2 group-hover:scale-110 transition-transform duration-300" />
+                <span className="text-lg opacity-0 transform translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                  {skill.label}
+                </span>
+              </div>
             ))}
           </div>
-          <h3 className="text-2xl font-semibold mb-8">Libraries & Tools</h3>
+
+          {/* Section for Libraries & Tools with line and text above */}
+          <div className="relative mt-16 mb-8">
+            <h3 className="text-2xl font-semibold relative z-10 inline-block bg-black px-4">
+              Libraries & Tools
+            </h3>
+            <div className="absolute inset-0 top-1/2 w-full border-t border-gray-700"></div>
+          </div>
           <div className="grid lg:grid-cols-10 sm:grid-cols-5 grid-cols-2 gap-6 justify-items-center">
             {frameworksAndTools.map((skill, index) => (
               <div key={index} className="flex flex-col items-center group">
-              <Icon icon={skill.icon} className="w-12 h-12 mb-2 group-hover:scale-110 transition-transform duration-300" />
-              <span className="text-lg opacity-0 transform translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                {skill.label}
-              </span>
-            </div>
+                <Icon icon={skill.icon} className="w-12 h-12 mb-2 group-hover:scale-110 transition-transform duration-300" />
+                <span className="text-lg opacity-0 transform translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                  {skill.label}
+                </span>
+              </div>
             ))}
           </div>
         </CardContent>

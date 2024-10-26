@@ -6,19 +6,18 @@ interface ProjectCardProps {
   title: string;
   description: string;
   imageUrl: string;
-  linkUrl: string;
   githubUrl: string;
   liveUrl?: string; // Optional live URL
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ year, title, description, imageUrl, linkUrl, githubUrl, liveUrl }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ year, title, description, imageUrl, githubUrl, liveUrl }) => {
   return (
-    <div className="block w-full border-t bg-black transition-all relative group container max-w-7xl mx-auto">
+    <div className="block w-full bg-black transition-all relative group container max-w-7xl mx-auto">
       <div className="flex flex-row justify-between items-center py-8 px-4">
         {/* Text Content */}
         <div className="flex flex-col space-y-2 flex-1 pr-4">
           <p className="text-sm text-gray-600">{year}</p>
-          <h2 className="text-2xl font-semibold text-gray-800">{title}</h2>
+          <h2 className="text-2xl font-semibold text-white">{title}</h2>
           <h3 className="text-lg text-gray-600">{description}</h3>
 
           {/* Hover Buttons Below Text */}

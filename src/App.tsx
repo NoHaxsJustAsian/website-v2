@@ -1,4 +1,3 @@
-// src/App.tsx
 import React from 'react';
 import HeroSection from './components/Hero';
 import Skills from './components/Skills';
@@ -20,8 +19,8 @@ const App: React.FC = () => {
         <div className="relative z-10">
           <Navbar /> 
           <HeroSection />
-          <Skills />
           <Projects />
+          <Skills />
         </div>
       </div>
     </ScrollProvider>
