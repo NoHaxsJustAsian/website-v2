@@ -43,19 +43,20 @@ class Particle {
     const distance = Math.sqrt(dx * dx + dy * dy);
 
     const gravity = 0.0005;
-    const randomness = Math.random() * 0.2 - 0.1;
-    this.ax = dx * gravity + randomness;
-    this.ay = dy * gravity + randomness;
+    const randomnessX = Math.random() * 0.2 - 0.1;
+    const randomnessY = Math.random() * 0.2 - 0.1;
+    this.ax = dx * gravity + randomnessX;
+    this.ay = dy * gravity + randomnessY;
 
     this.vx += this.ax;
     this.vy += this.ay;
 
-    this.x += this.vx + randomness;
-    this.y += this.vy + randomness;
+    this.x += this.vx + randomnessX;
+    this.y += this.vy + randomnessY;
 
     if (distance > radius) {
-      this.vx *= -0.9 + randomness * 2;
-      this.vy *= -0.9 + randomness * 2;
+      this.vx *= -0.9 + randomnessX * 2;
+      this.vy *= -0.9 + randomnessY * 2;
     }
 
     this.hue += Math.random() * 0.2;

@@ -51,11 +51,11 @@ const Navbar: React.FC = () => {
     >
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <motion.div
-          className={`flex justify-between items-center w-full max-w-[90rem] mx-auto gap-4 rounded-full ${
+          className={`flex justify-between items-center w-full max-w-[90rem] mx-auto gap-6 rounded-full ${
             scrolled
-              ? "backdrop-blur-lg"
+              ? "backdrop-blur-lg bg-white bg-opacity-10"
               : "bg-transparent"
-          } p-4 transition-colors duration-300`}
+          } p-4 px-4 sm:px-6 lg:px-8 transition-colors duration-300`}
           layout
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
         >

@@ -72,7 +72,7 @@ export const frameworksAndTools = [
 const Skills: React.FC = () => {
   return (
     <div>
-      <div className="w-full container max-w-7xl mx-auto" />
+      <div className="w-full container max-w-7xl mx-auto sm:px-6 lg:px-8" />
       <Card className="text-white container max-w-7xl mx-auto">
         <CardHeader className="text-4xl font-bold mb-4 text-white">
           Technical Skills

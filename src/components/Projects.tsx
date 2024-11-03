@@ -6,24 +6,32 @@ const Projects: React.FC = () => {
   const projects = [
     {
       year: 2024,
+      title: "GenSchedule",
+      description: "Screenshot any schedule to produce an ICA.",
+      imageUrl: "https://framerusercontent.com/images/oju8MD5Ne5UmhaKovKif80VE9A.jpg",
+      liveUrl: "https://genschedule.com",
+      githubUrl: "https://github.com/NoHaxsJustAsian/genschedule"
+    },
+    {
+      year: 2024,
       title: "RecieptOCR.com",
       description: "Receipt photo straight to your Notion page.",
       imageUrl: "https://framerusercontent.com/images/zXoCrASGMAI3AQC5w1fbMUozg.jpg",
       liveUrl: "https://recieptocr.com",
-      githubUrl: "https://github.com/example/olliviere"
+      githubUrl: "https://github.com/NoHaxsJustAsian/receipt-ocr-to-notion"
     },
     {
       year: 2024,
-      title: "Jubilant",
-      description: "How we doubled market growth.",
+      title: "Personal Website v2",
+      description: "This website.",
       imageUrl: "https://framerusercontent.com/images/oju8MD5Ne5UmhaKovKif80VE9A.jpg",
-      liveUrl: "./case-studies/jubilant",
-      githubUrl: "https://github.com/example/jubilant"
+      liveUrl: "https://wintongtawee.dev",
+      githubUrl: "https://github.com/NoHaxsJustAsian/website-v2"
     },
   ];
 
   return (
-    <div className="bg-black py-16">
+    <div className="bg-black py-16  sm:px-6 lg:px-8">
       <div className="container max-w-7xl mx-auto px-4">
         <h2 className="text-4xl font-bold mb-12 text-white pb-4">
           Recent Projects
