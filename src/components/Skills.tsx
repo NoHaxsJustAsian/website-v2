@@ -32,6 +32,7 @@ import dockerIcon from '@iconify/icons-logos/docker-icon';
 import lispIcon from '@iconify/icons-file-icons/common-lisp';
 import nextIcon from '@iconify/icons-skill-icons/nextjs-dark';
 import vueIcon from '@iconify/icons-logos/vue';
+import threejsIcon from '@iconify/icons-skill-icons/threejs-light';
 
 export const languages = [
   { icon: swiftIcon, label: 'Swift' },
@@ -51,6 +52,7 @@ export const frameworksAndTools = [
   { icon: nextIcon, label: 'Next.js' },
   { icon: vueIcon, label: 'Vue.js' },
   { icon: nodejsIcon, label: 'Node.js' },
+  { icon: threejsIcon, label: 'Three.js' },
   { icon: tailwindIcon, label: 'Tailwind' },
   { icon: bootstrapIcon, label: 'Bootstrap' },
   { icon: flaskIcon, label: 'Flask' },

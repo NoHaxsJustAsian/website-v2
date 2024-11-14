@@ -10,6 +10,9 @@ export default {
 		fontFamily: {
 			sans: ['"Inter"', 'sans-serif'],
 		  },
+		  fontSize: {
+			'xxs': '0.5rem',
+		  },
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',

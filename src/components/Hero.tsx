@@ -111,9 +111,6 @@ const HeroSection: React.FC = () => {
         <motion.p className="text-lg text-white mt-1" style={{ opacity: para3Opacity }}>
           Currently searching for <strong>Spring 2025 New Grad Positions.</strong>
         </motion.p>
-        <motion.p className="text-lg text-white mt-1" style={{ opacity: para4Opacity }}>
-          <strong>Yes, you can touch it. It won't bite.</strong>
-        </motion.p>
       </div>
     </div>
   );

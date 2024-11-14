@@ -1,0 +1,222 @@
+
+{
+  "work_experience": [
+    {
+      "title": "Manager",
+      "company_name": "Sushi Thai Garden / Phila Fusion",
+      "start_date": "2016/06/01",
+      "date": "June 2016 - August 2021",
+      "points": [
+        "Monitored revenue and expenditures on supplies and equipment.",
+        "Planned, distributed, and managed work schedules for staff, as well as organized menus, specials, and events.",
+        "Oversaw inventory management and ensured proper stock levels.",
+        "Obtained proper licensing and permits and maintained communication with food suppliers, event staff, and customers."
+      ]
+    },
+    {
+      "title": "Snowboard Instructor",
+      "company_name": "Gore Mountain",
+      "start_date": "2018/11/01",
+      "date": "November 2018 - March 2019",
+      "points": [
+        "Provided one-on-one and group snowboarding lessons to clients of varying ages (5-50) and skill levels (beginner to expert).",
+        "Offered support and monitored clients' progress systematically to help them improve their snowboarding skills.",
+        "Promoted lessons, boarding passes, and services of the tuning shop to visitors.",
+        "Ensured the maintenance and proper functioning of equipment during early and late operating hours."
+      ]
+    },
+    {
+      "title": "Executive Board: Brand and Marketing Lead, Project Lead",
+      "company_name": "FirstByte",
+      "start_date": "2023/01/01",
+      "date": "January 2023 - Present",
+      "location": "Boston, Massachusetts, United States",
+      "points": [
+        "Maintaining social media platforms for the club, documenting our events, and recruiting new members.",
+        "Curating lesson plans and presentations in a team environment for Camp Harbor View to teach coding fundamentals and JavaScript in recurrent bi-weekly lessons to students in grades 10-12.",
+        "Designing curricula such as a Python/ML workshop, HTML/CSS workshop, and our Microbit workshop.",
+        "Planned and marketed a circuit-based hackathon with over 100 applicants."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Image Processor",
+      "company_name": "CS3500 Project",
+      "start_date": "2023/01/01",
+      "date": "January 2023 - April 2023",
+      "points": [
+        "Developed software in Java to edit images of varying file types, including layer support.",
+        "Implemented and tested features including saving session progress and GUI functionality using Java Swing."
+      ],
+      "skills": ["Java", "Object-Oriented Programming", "Java Swing"],
+      "button1Link": "https://github.com/NoHaxsJustAsian/Image-Processor"
+    },
+    {
+      "title": "Personal Website",
+      "company_name": "Personal Project",
+      "start_date": "2023/02/01",
+      "date": "February 2023 - July 2023",
+      "points": [
+        "Developed a personal website using JavaScript, React, Tailwind, and Framer Motion."
+      ],
+      "skills": ["JavaScript", "React", "Tailwind", "Framer Motion"],
+      "button1Link": "https://github.com/NoHaxsJustAsian/personal-portfolio",
+      "button2Link": "https://www.wintongtawee.dev/#home"
+    },
+    {
+      "title": "Time and Place (TAP)",
+      "company_name": "HackBeanPot",
+      "start_date": "2023/02/01",
+      "date": "February 2023 - February 2023",
+      "points": [
+        "Developed the front-end of a web application using TypeScript, React, Node, CSS Tailwind, and Bootstrap, with MongoDB as the database to store user data.",
+        "The application allows users to create personal events, join events, and be notified of events near or associated with a university."
+      ],
+      "skills": ["TypeScript", "React.js", "CSS"],
+      "button1Link": "https://github.com/jarenadams21/friends-fe"
+    },
+    {
+      "title": "VeHealth",
+      "company_name": "Vechain x EasyA Hackathon",
+      "start_date": "2023/10/01",
+      "date": "October 2023 - October 2023",
+      "points": [
+        "Programmed the front-end of the website using TypeScript, React, Node, CSS Tailwind, and Bootstrap, with Firebase as the database to store user data and handle user login.",
+        "Developed a Web3 application concept that allows users and health insurance providers to trade verified user health data for discounts on healthcare using smart contracts written in Solidity on the Vechain blockchain."
+      ],
+      "skills": ["Web Development", "CSS"]
+    },
+    {
+      "title": "CampFire",
+      "company_name": "CS4520 Project",
+      "start_date": "2023/06/31",
+      "date": "June 2023 - June 2023",
+      "points": [
+        "Developed an iOS app in Swift to help users stay organized and manage daily tasks, featuring Firebase Auth, Firebase Database, and UIKit.",
+        "Implemented features like biometric authentication, dark mode, and notifications."
+      ],
+      "skills": ["Firebase", "Swift", "GitHub"],
+      "button1Link": "https://github.com/NoHaxsJustAsian/CampFire"
+    },
+    {
+      "title": "iOSChat",
+      "company_name": "CS4520 Project",
+      "start_date": "2023/06/01",
+      "date": "June 2023 - June 2023",
+      "points": [
+        "Developed a live chat application for iOS using Swift, Firebase Auth for registration and authentication, and Firebase Database for storing user data and messages."
+      ],
+      "skills": ["Firebase", "Swift"],
+      "button1Link": "https://github.com/NoHaxsJustAsian/iOSChat"
+    },
+    {
+      "title": "Distributed Key-Value Database",
+      "company_name": "Personal Project",
+      "start_date": "2023/09/01",
+      "date": "September 2023 – December 2023",
+      "points": [
+        "Implemented the Raft consensus algorithm to manage logs in a key-value database, doubling performance by optimizing the state machine and election processes.",
+        "Conducted thorough testing using a custom suite of stress, crash, and jitter tests, to ensure reliable performance."
+      ],
+      "skills": ["Python"]
+    },
+    {
+      "title": "Web Crawler",
+      "company_name": "Personal Project",
+      "start_date": "2023/09/01",
+      "date": "September 2023 – December 2023",
+      "points": [
+        "Implemented a web crawler to retrieve a set of flags from a large fake social media platform by recursively crawling through pages.",
+        "Kept track of uncrawled URLs in a queue and crawled URLs in a separate array.",
+        "Managed HTTP responses, re-crawling pages that returned a 500 response."
+      ],
+      "skills": ["Web Crawling", "Python"]
+    },
+    {
+      "title": "Lightweight Spreadsheet Editor",
+      "company_name": "Northeastern University",
+      "start_date": "2023/12/01",
+      "date": "December 2023 - December 2023",
+      "points": [
+        "Developed a spreadsheet in React, using TypeScript, SCSS (Sass) with full functionality for basic operands, customizable fonts, and cell selection.",
+        "Thoroughly tested using Jest unit tests."
+      ],
+      "skills": ["TypeScript", "React.js", "CSS", "SASS", "Unit Testing", "Jest", "SCSS"],
+      "button1Link": "https://github.com/NoHaxsJustAsian"
+    },
+    {
+      "title": "BibimBot",
+      "company_name": "Personal Project",
+      "start_date": "2024/01/01",
+      "date": "January 2024 - Present",
+      "points": [
+        "Developed a Discord bot with a multitude of commands in Python, capable of playing music in voice channels from a URL, importing emotes, and various user-to-user interactions.",
+        "Hosted and deployed the bot on a Raspberry Pi, utilizing GitHub Actions to automatically detect a new commit to update and restart the process."
+      ],
+      "skills": ["GitHub Actions", "Python"]
+    },
+    {
+      "title": "Mental Health Chatbot",
+      "company_name": "Personal Project",
+      "start_date": "2024/01/01",
+      "date": "January 2024 – April 2024",
+      "points": [
+        "Engineered an LSTM-based sentiment analysis model integrated with a language model (LLM) to effectively differentiate between sentiments in user inputs, targeting emotion detection for a mental health chatbot.",
+        "Enhanced model performance through preprocessing, hyperparameter tuning, and finetuning data, increasing LSTM prediction accuracy from 10% to 70% compared to the base model."
+      ],
+      "skills": ["Python", "TensorFlow", "SKlearn", "NLTK", "PyTorch"]
+    }
+  ],
+  "volunteering": [
+    {
+      "title": "Brand and Marketing Lead, Project Lead",
+      "company_name": "FirstByte",
+      "start_date": "2023/01/01",
+      "date": "January 2023 - Present",
+      "points": [
+        "Curate lesson plans and presentations for a younger audience.",
+        "Planned and taught coding fundamentals and JavaScript basics to high schoolers at Camp Harbor View in recurrent bi-weekly lessons.",
+        "Designing curricula such as a Python/ML workshop, HTML/CSS workshop, and our Microbit workshop.",
+        "Planned and marketed a circuit-based hackathon with over 100 applicants."
+      ],
+      "skills": ["Lesson Planning", "Coding Education"],
+      "button1Link": "http://teachfirstbyte.org/"
+    },
+    {
+      "title": "Eagle Scout Project || Gazebo",
+      "company_name": "Boy Scouts of America Troop 4070",
+      "start_date": "2012/01/01",
+      "date": "January 2012 - December 2021",
+      "points": [
+        "Oversaw risk management practices while planning, coordinating, and leading troop activities.",
+        "Planned, fundraised over 3 thousand dollars, and constructed a gazebo for a local Buddhist temple.",
+        "Oversaw a construction zone, ensured safety protocols were followed, and the final project met building code and regulation."
+      ],
+      "skills": ["Risk Management", "Fundraising", "Construction Oversight"]
+    },
+    {
+      "title": "Blood Drive Ambassador",
+      "company_name": "American Red Cross",
+      "start_date": "2020/07/01",
+      "date": "July 2020 - March 2021",
+      "points": [
+        "Facilitated client registration for blood donation, ensuring proper data collection.",
+        "Managed post-donation care, providing nourishment and other necessities to donors.",
+        "Maintained a sanitary environment by cleaning all surfaces between clients, adhering to COVID-19 safety guidelines."
+      ],
+      "skills": ["Client Registration", "Post-Donation Care", "Sanitation"]
+    },
+    {
+      "title": "Emergency Room Volunteer",
+      "company_name": "Saratoga Hospital",
+      "start_date": "2020/01/01",
+      "date": "January 2020 - March 2020",
+      "points": [
+        "Delivered essential amenities such as blankets, water, and food to patients to ensure their comfort.",
+        "Ensured the availability of medical equipment by regularly restocking throughout the hospital."
+      ],
+      "skills": ["Patient Care", "Inventory Management"]
+    }
+  ]
+}

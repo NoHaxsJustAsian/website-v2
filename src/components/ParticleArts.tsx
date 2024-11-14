@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from "react";
 
 class Particle {
   x: number;
@@ -37,7 +37,13 @@ class Particle {
     ctx.restore();
   }
 
-  update(centerX: number, centerY: number, radius: number, mouseX: number, mouseY: number) {
+  update(
+    centerX: number,
+    centerY: number,
+    radius: number,
+    mouseX: number,
+    mouseY: number
+  ) {
     const dx = centerX - this.x;
     const dy = centerY - this.y;
     const distance = Math.sqrt(dx * dx + dy * dy);
@@ -65,7 +71,9 @@ class Particle {
 
     const dxCursor = this.x - mouseX;
     const dyCursor = this.y - mouseY;
-    const distanceToCursor = Math.sqrt(dxCursor * dxCursor + dyCursor * dyCursor);
+    const distanceToCursor = Math.sqrt(
+      dxCursor * dxCursor + dyCursor * dyCursor
+    );
 
     if (distanceToCursor < 100) {
       const force = 100 / distanceToCursor;
@@ -85,29 +93,24 @@ class Connection {
     this.p2 = p2;
 
     const rand = Math.random();
-    if (rand < 0.25) {
-      this.style = 'white';
-    } else if (rand < 0.5) {
-      this.style = 'blue';
-    } else if (rand < 0.75) {
-      this.style = 'gradient';
+    if (rand < 0.33) {
+      this.style = "white";
+    } else if (rand < 0.66) {
+      this.style = "blue";
     } else {
-      this.style = 'anotherBlue';
+      this.style = "anotherBlue";
     }
   }
 
   draw(ctx: CanvasRenderingContext2D) {
-    if (this.style === 'white') {
-      ctx.strokeStyle = 'rgba(255, 255, 255, 1)';
-    } else if (this.style === 'blue') {
-      ctx.strokeStyle = 'rgba(0, 150, 255, 1)';
-    } else if (this.style === 'anotherBlue') {
-      ctx.strokeStyle = 'rgba(0, 100, 200, 1)';
+    if (this.style === "white") {
+      ctx.strokeStyle = "rgba(255, 255, 255, 1)";
+    } else if (this.style === "blue") {
+      ctx.strokeStyle = "rgba(0, 150, 255, 1)";
+    } else if (this.style === "anotherBlue") {
+      ctx.strokeStyle = "rgba(0, 100, 200, 1)";
     } else {
-      const gradient = ctx.createLinearGradient(this.p1.x, this.p1.y, this.p2.x, this.p2.y);
-      gradient.addColorStop(0, 'rgba(0, 150, 255, 1)');
-      gradient.addColorStop(1, 'rgba(255, 255, 255, 1)'); 
-      ctx.strokeStyle = gradient;
+      ctx.strokeStyle = "rgba(0, 200, 255, 1)";
     }
 
     // Adding randomness to the connection lines
@@ -217,7 +220,13 @@ const ParticleArts: React.FC<ParticleArtsProps> = ({
       const radius = Math.min(canvas.width, canvas.height) / 3;
 
       particles.forEach((particle) => {
-        particle.update(centerX, centerY, radius, mouseRef.current.x, mouseRef.current.y);
+        particle.update(
+          centerX,
+          centerY,
+          radius,
+          mouseRef.current.x,
+          mouseRef.current.y
+        );
         particle.draw(ctx);
       });
 

@@ -6,19 +6,21 @@ const Projects: React.FC = () => {
   const projects = [
     {
       year: 2024,
-      title: "GenSchedule",
-      description: "Screenshot any schedule to produce an ICA.",
+      title: "GenSchedule.com",
+      description: "Screenshot any schedule to produce an downloadable ICS.",
       imageUrl: "https://framerusercontent.com/images/oju8MD5Ne5UmhaKovKif80VE9A.jpg",
       liveUrl: "https://genschedule.com",
-      githubUrl: "https://github.com/NoHaxsJustAsian/genschedule"
+      githubUrl: "https://github.com/NoHaxsJustAsian/genschedule",
+      technologies: ['Python', 'TypeScript', 'Flask', 'React', 'Tailwind CSS']
     },
     {
       year: 2024,
       title: "RecieptOCR.com",
-      description: "Receipt photo straight to your Notion page.",
+      description: "Take a photo of reciept to immediately parse and sync it to your Notion page.",
       imageUrl: "https://framerusercontent.com/images/zXoCrASGMAI3AQC5w1fbMUozg.jpg",
       liveUrl: "https://recieptocr.com",
-      githubUrl: "https://github.com/NoHaxsJustAsian/receipt-ocr-to-notion"
+      githubUrl: "https://github.com/NoHaxsJustAsian/receipt-ocr-to-notion",
+      technologies: ['Python', 'TypeScript', 'Flask', 'React', 'Tailwind CSS']
     },
     {
       year: 2024,
@@ -26,7 +28,8 @@ const Projects: React.FC = () => {
       description: "This website.",
       imageUrl: "https://framerusercontent.com/images/oju8MD5Ne5UmhaKovKif80VE9A.jpg",
       liveUrl: "https://wintongtawee.dev",
-      githubUrl: "https://github.com/NoHaxsJustAsian/website-v2"
+      githubUrl: "https://github.com/NoHaxsJustAsian/website-v2",
+      technologies: ['TypeScript', 'React', 'Tailwind CSS', 'Three.js']
     },
   ];
 
