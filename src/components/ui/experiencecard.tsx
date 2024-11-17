@@ -32,9 +32,7 @@ import pytorchIcon from '@iconify/icons-devicon/pytorch';
 import sklearnIcon from '@iconify/icons-devicon/scikitlearn';
 import dockerIcon from '@iconify/icons-logos/docker-icon';
 import lispIcon from '@iconify/icons-file-icons/common-lisp';
-import nextIcon from '@iconify/icons-skill-icons/nextjs-dark';
 import vueIcon from '@iconify/icons-logos/vue';
-import threejsIcon from '@iconify/icons-skill-icons/threejs-light';
 
 interface ExperienceCardProps {
   year: string;
@@ -121,7 +119,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
             <div className="mt-2">
               <a href={companyUrl} target="_blank" rel="noopener noreferrer">
                 <Button variant="default" size="sm" className="bg-white text-black">
-                  Company Website
+                  Website
                 </Button>
               </a>
             </div>

@@ -27,7 +27,7 @@ const Experience: React.FC = () => {
   ];
 
   return (
-    <div className="bg-black py-16 sm:px-6 lg:px-8">
+    <div className="bg-black sm:px-6 lg:px-8">
       <div className="container max-w-7xl mx-auto px-4">
         <h2 className="text-4xl font-bold mb-12 text-white pb-4">Experience</h2>
 
@@ -41,8 +41,6 @@ const Experience: React.FC = () => {
               </h3>
               <div className="flex-grow border-t border-gray-700"></div>
             </div>
-
-            {/* Experience Card Content */}
             <ExperienceCard {...experience} />
           </div>
         ))}

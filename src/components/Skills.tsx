@@ -75,7 +75,7 @@ const Skills: React.FC = () => {
   return (
     <div>
       <div className="w-full container max-w-7xl mx-auto sm:px-6 lg:px-8" />
-      <Card className="text-white container max-w-7xl mx-auto">
+      <Card className="text-white py-10 container max-w-7xl mx-auto">
         <CardHeader className="text-4xl font-bold mb-4 text-white">
           Technical Skills
         </CardHeader>

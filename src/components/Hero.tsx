@@ -27,8 +27,7 @@ const HeroSection: React.FC = () => {
   const para1Opacity = useTransform(scrollY, [threshold, threshold + 60], [1, 0.4]);
   const para2Opacity = useTransform(scrollY, [threshold + 20, threshold + 80], [1, 0.4]);
   const para3Opacity = useTransform(scrollY, [threshold + 40, threshold + 100], [1, 0.4]);
-  const para4Opacity = useTransform(scrollY, [threshold + 60, threshold + 120], [1, 0.4]);
-
+  
   return (
     <div ref={heroRef} className="relative h-screen w-full z-10 sm:px-6 lg:px-8">
       <motion.div

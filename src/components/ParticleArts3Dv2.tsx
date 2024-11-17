@@ -92,7 +92,6 @@ class Particle {
       const dx = center.x - this.mesh.position.x;
       const dy = center.y - this.mesh.position.y;
       const dz = center.z - this.mesh.position.z;
-      const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
       const gravity = 0.0009; // Gravitational constant
       const randomness = new THREE.Vector3(
         Math.random() * 0.05 - 0.025,

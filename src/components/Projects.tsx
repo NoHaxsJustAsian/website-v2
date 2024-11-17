@@ -34,24 +34,19 @@ const Projects: React.FC = () => {
   ];
 
   return (
-    <div className="bg-black py-16  sm:px-6 lg:px-8">
+    <div className="bg-black pt-10 sm:px-6 lg:px-8">
       <div className="container max-w-7xl mx-auto px-4">
         <h2 className="text-4xl font-bold mb-12 text-white pb-4">
           Recent Projects
         </h2>
-
-        {/* Project Cards with Title and Line Effect */}
         {projects.map((project, index) => (
           <div key={index} className="mb-4">
-            {/* Project Title with Line */}
             <div className="flex items-center mb-4">
               <h3 className="text-2xl font-semibold text-white mr-4 whitespace-nowrap">
                 {project.year} - {project.title}
               </h3>
               <div className="flex-grow border-t border-gray-700"></div>
             </div>
-
-            {/* Project Card Content */}
             <ProjectCard {...project} />
           </div>
         ))}

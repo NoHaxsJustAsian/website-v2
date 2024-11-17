@@ -5,14 +5,24 @@ import {
   HoverCardContent,
 } from "@/components/ui/hover-card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { CalendarIcon } from "@radix-ui/react-icons";
-import { motion } from "framer-motion";
-import { useScrollContext } from '@/components/ScrollContext';
+import {
+  CalendarIcon,
+  ChevronUpIcon,
+  GitHubLogoIcon,
+  LinkedInLogoIcon,
+} from "@radix-ui/react-icons";
+import { motion, AnimatePresence } from "framer-motion";
+import { useScrollContext } from "@/components/ScrollContext";
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  onNavigate: (section: string) => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
   const { scrollY, threshold } = useScrollContext();
 
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const unsubscribe = scrollY.onChange((y) => {
@@ -46,7 +56,7 @@ const Navbar: React.FC = () => {
     <header
       className={`fixed top-4 w-full flex justify-center items-center p-2 z-50 transition-all duration-300`}
       style={{
-        marginTop: scrolled ? '0' : '1rem',
+        marginTop: scrolled ? "0" : "1rem",
       }}
     >
       <div className="w-full px-4 sm:px-6 lg:px-8">
@@ -61,6 +71,7 @@ const Navbar: React.FC = () => {
         >
           <div className="flex items-center gap-4">
             <motion.div
+              onClick={() => onNavigate("hero")}
               variants={winVariants}
               animate={scrolled ? "visible" : "hidden"}
               className="flex items-center cursor-pointer overflow-hidden"
@@ -121,27 +132,77 @@ const Navbar: React.FC = () => {
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
               <motion.button
+                onClick={() => onNavigate("skills")}
                 className="bg-transparent border border-gray-200 rounded-full px-4 py-2 shadow-md text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Work
+                Skills
               </motion.button>
               <motion.button
+                onClick={() => onNavigate("projects")}
                 className="bg-transparent border border-gray-200 rounded-full px-4 py-2 shadow-md text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                About
+                Projects
+              </motion.button>
+              <motion.button
+                onClick={() => onNavigate("experience")}
+                className="bg-transparent border border-gray-200 rounded-full px-4 py-2 shadow-md text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Experience
               </motion.button>
             </motion.nav>
           </div>
           <motion.div
-            className="text-2xl cursor-pointer text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-white transition-colors"
+            className="flex items-center gap-4"
             layout
             initial={false}
           >
-            &#x2630;
+            <AnimatePresence>
+              {menuOpen && (
+                <motion.div
+                  className="flex space-x-4"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <a
+                    href="https://github.com/nohaxsjustasian"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-white transition-colors"
+                  >
+                    <GitHubLogoIcon className="h-6 w-6" />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/tunwa-tongtawee/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-white transition-colors"
+                  >
+                    <LinkedInLogoIcon className="h-6 w-6" />
+                  </a>
+                </motion.div>
+              )}
+            </AnimatePresence>
+            <motion.div
+              className="text-2xl cursor-pointer text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-white transition-colors"
+              layout
+              initial={false}
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              <motion.div
+                animate={{ rotate: menuOpen ? -90 : 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                <ChevronUpIcon className="h-6 w-6" />
+              </motion.div>
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>

@@ -8,9 +8,14 @@ import ParticleArts3D from "./components/ParticleArts3Dv2";
 import Projects from "./components/Projects";
 import { ScrollProvider } from "./components/ScrollContext";
 import Experience from "./components/Experience";
+import { useRef } from "react";
 
 const App: React.FC = () => {
-  const [isTransitionComplete, setIsTransitionComplete] = useState(false); // State to track transition
+  const [isTransitionComplete, setIsTransitionComplete] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
+  const skillsRef = useRef<HTMLElement>(null);
+  const projectsRef = useRef<HTMLElement>(null);
+  const experienceRef = useRef<HTMLElement>(null);
 
   return (
     <ScrollProvider>
@@ -35,11 +40,33 @@ const App: React.FC = () => {
               : "opacity-0 pointer-events-none"
           }`}
         >
-          <Navbar />
-          <HeroSection />
-          <Projects />
-          <Skills />
-          <Experience />
+          <Navbar
+            onNavigate={(section) => {
+              if (section === "projects" && projectsRef.current) {
+                projectsRef.current.scrollIntoView({ behavior: "smooth" });
+              } else if (section === "skills" && skillsRef.current) {
+                skillsRef.current.scrollIntoView({ behavior: "smooth" });
+              }
+              else if
+              (section === "experience" && experienceRef.current) {
+                experienceRef.current.scrollIntoView({ behavior: "smooth" });
+              } else if (section === "hero" && heroRef.current) {
+                heroRef.current.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+          />
+          <section ref={heroRef}>
+          <HeroSection/>
+          </section>
+          <section ref={skillsRef} className="scroll-mt-[64px]">
+            <Skills />
+          </section>
+          <section ref={projectsRef} className="scroll-mt-[64px]">
+            <Projects />
+          </section>
+          <section ref={experienceRef} className="scroll-mt-[64px]">
+            <Experience />
+          </section>
         </div>
       </div>
     </ScrollProvider>
@@ -47,3 +74,5 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+
