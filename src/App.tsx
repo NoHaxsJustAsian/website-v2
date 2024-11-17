@@ -64,7 +64,7 @@ const App: React.FC = () => {
           <section ref={projectsRef} className="scroll-mt-[64px]">
             <Projects />
           </section>
-          <section ref={experienceRef} className="scroll-mt-[64px]">
+          <section ref={experienceRef} className="scroll-mt-[16px]">
             <Experience />
           </section>
         </div>

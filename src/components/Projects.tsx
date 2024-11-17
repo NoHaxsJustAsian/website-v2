@@ -8,7 +8,7 @@ const Projects: React.FC = () => {
       year: 2024,
       title: "GenSchedule.com",
       description: "Screenshot any schedule to produce an downloadable ICS.",
-      imageUrl: "https://framerusercontent.com/images/oju8MD5Ne5UmhaKovKif80VE9A.jpg",
+      videoUrl: "./genschedule.mp4",
       liveUrl: "https://genschedule.com",
       githubUrl: "https://github.com/NoHaxsJustAsian/genschedule",
       technologies: ['Python', 'TypeScript', 'Flask', 'React', 'Tailwind CSS']
@@ -17,7 +17,7 @@ const Projects: React.FC = () => {
       year: 2024,
       title: "RecieptOCR.com",
       description: "Take a photo of reciept to immediately parse and sync it to your Notion page.",
-      imageUrl: "https://framerusercontent.com/images/zXoCrASGMAI3AQC5w1fbMUozg.jpg",
+      videoUrl: "./recieptocr.mp4",
       liveUrl: "https://recieptocr.com",
       githubUrl: "https://github.com/NoHaxsJustAsian/receipt-ocr-to-notion",
       technologies: ['Python', 'TypeScript', 'Flask', 'React', 'Tailwind CSS']
@@ -26,7 +26,7 @@ const Projects: React.FC = () => {
       year: 2024,
       title: "Personal Website v2",
       description: "This website.",
-      imageUrl: "https://framerusercontent.com/images/oju8MD5Ne5UmhaKovKif80VE9A.jpg",
+      videoUrl: "./portfolio.mp4",
       liveUrl: "https://wintongtawee.dev",
       githubUrl: "https://github.com/NoHaxsJustAsian/website-v2",
       technologies: ['TypeScript', 'React', 'Tailwind CSS', 'Three.js']
@@ -34,7 +34,7 @@ const Projects: React.FC = () => {
   ];
 
   return (
-    <div className="bg-black pt-10 sm:px-6 lg:px-8">
+    <div className="bg-black py-10 sm:px-6 lg:px-8">
       <div className="container max-w-7xl mx-auto px-4">
         <h2 className="text-4xl font-bold mb-12 text-white pb-4">
           Recent Projects
