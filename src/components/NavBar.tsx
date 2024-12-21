@@ -22,7 +22,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
   const { scrollY, threshold } = useScrollContext();
 
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(true);
 
   useEffect(() => {
     const unsubscribe = scrollY.onChange((y) => {
@@ -127,7 +127,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             </motion.div>
 
             <motion.nav
-              className="flex space-x-4"
+              className="hidden sm:flex space-x-4"
               layout
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >

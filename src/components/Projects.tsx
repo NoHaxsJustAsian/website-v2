@@ -25,7 +25,7 @@ const Projects: React.FC = () => {
     {
       year: 2024,
       title: "Personal Website v2",
-      description: "This website.",
+      description: "This website you are currently on. The breathing scribble is inspired by Virtual Self (Porter Robinson).",
       videoUrl: "./portfolio.mp4",
       liveUrl: "https://wintongtawee.dev",
       githubUrl: "https://github.com/NoHaxsJustAsian/website-v2",

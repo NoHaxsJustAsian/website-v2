@@ -87,11 +87,22 @@ const Skills: React.FC = () => {
             </h3>
             <div className="absolute inset-0 top-1/2 w-full border-t border-gray-700"></div>
           </div>
-          <div className="grid lg:grid-cols-10 sm:grid-cols-5 grid-cols-2 gap-6 justify-items-center">
+          <div className="grid lg:grid-cols-10 sm:grid-cols-5 grid-cols-3 gap-6 justify-items-center">
             {languages.map((skill, index) => (
               <div key={index} className="flex flex-col items-center group">
-                <Icon icon={skill.icon} className="w-12 h-12 mb-2 group-hover:scale-110 transition-transform duration-300" />
-                <span className="text-lg opacity-0 transform translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                <Icon
+                  icon={skill.icon}
+                  className="w-12 h-12 mb-2 transition-transform duration-300 group-hover:scale-110"
+                />
+                <span
+                  className="
+                    text-lg 
+                    opacity-100 translate-y-0 
+                    md:opacity-0 md:translate-y-2 
+                    group-hover:opacity-100 group-hover:translate-y-0 
+                    transition-all duration-300
+                  "
+                >
                   {skill.label}
                 </span>
               </div>
@@ -105,11 +116,22 @@ const Skills: React.FC = () => {
             </h3>
             <div className="absolute inset-0 top-1/2 w-full border-t border-gray-700"></div>
           </div>
-          <div className="grid lg:grid-cols-10 sm:grid-cols-5 grid-cols-2 gap-6 justify-items-center">
+          <div className="grid lg:grid-cols-10 sm:grid-cols-5 grid-cols-3 gap-6 justify-items-center">
             {frameworksAndTools.map((skill, index) => (
               <div key={index} className="flex flex-col items-center group">
-                <Icon icon={skill.icon} className="w-12 h-12 mb-2 group-hover:scale-110 transition-transform duration-300" />
-                <span className="text-lg opacity-0 transform translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                <Icon
+                  icon={skill.icon}
+                  className="w-12 h-12 mb-2 transition-transform duration-300 group-hover:scale-110"
+                />
+                <span
+                  className="
+                    text-lg 
+                    opacity-100 translate-y-0 
+                    md:opacity-0 md:translate-y-2 
+                    group-hover:opacity-100 group-hover:translate-y-0 
+                    transition-all duration-300
+                  "
+                >
                   {skill.label}
                 </span>
               </div>

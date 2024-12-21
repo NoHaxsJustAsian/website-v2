@@ -1,5 +1,5 @@
 // ProjectCard.tsx
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@iconify/react";
 
@@ -62,16 +62,71 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   technologies,
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+
+  // Function to determine if the device is mobile based on viewport width
+  const checkIsMobile = () => {
+    if (typeof window !== "undefined") {
+      setIsMobile(window.innerWidth <= 768); // Adjust breakpoint as needed
+    }
+  };
+
+  useEffect(() => {
+    checkIsMobile();
+    window.addEventListener("resize", checkIsMobile);
+    return () => {
+      window.removeEventListener("resize", checkIsMobile);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isMobile || !cardRef.current) return;
+
+    const observerOptions = {
+      root: null, // viewport
+      rootMargin: "0px",
+      threshold: 0.5, // Adjust based on when you want to trigger
+    };
+
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          if (videoRef.current) {
+            videoRef.current.currentTime = 0;
+            videoRef.current.play();
+          }
+        } else {
+          setIsVisible(false);
+          if (videoRef.current) {
+            videoRef.current.pause();
+            videoRef.current.currentTime = 0;
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    observer.observe(cardRef.current);
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, [isMobile]);
 
   const handleMouseEnter = () => {
-    if (videoRef.current) {
+    if (!isMobile && videoRef.current) {
       videoRef.current.currentTime = 0;
       videoRef.current.play();
     }
   };
 
   const handleMouseLeave = () => {
-    if (videoRef.current) {
+    if (!isMobile && videoRef.current) {
       videoRef.current.pause();
       videoRef.current.currentTime = 0;
     }
@@ -79,12 +134,34 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <div
+      ref={cardRef}
       className="block w-full bg-black transition-all relative group container max-w-7xl mx-auto"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="flex flex-row justify-between items-center py-8 px-4">
-        <div className="flex flex-col space-y-2 flex-1 pr-4">
+      <div className="flex flex-col md:flex-row justify-between items-center py-8 px-4">
+        {/* Video Container */}
+        <div className="relative w-full md:w-[500px] rounded-xl overflow-hidden shadow-md mb-6 md:mb-0 md:mr-6">
+          <div className="aspect-video">
+            <video
+              ref={videoRef}
+              className={`w-full h-full object-cover transition-transform duration-500 ease-in-out transform ${
+                isMobile
+                  ? isVisible
+                    ? "scale-105"
+                    : "scale-100"
+                  : "group-hover:scale-105"
+              }`}
+              muted
+              playsInline
+              loop
+            >
+              <source src={videoUrl} type="video/mp4" />
+            </video>
+          </div>
+        </div>
+
+        <div className="flex flex-col space-y-2 flex-1">
           <p className="text-sm text-gray-600">{year}</p>
           <h2 className="text-2xl font-semibold text-white">{title}</h2>
           <h3 className="text-lg text-gray-600">{description}</h3>
@@ -101,7 +178,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                     icon={technologyIcons[tech]}
                     className="w-9 h-9 mb-1 text-gray-500 group-hover:scale-110 transition-transform duration-300"
                   />
-                  <span className="text-xxs text-gray-500 opacity-0 transform translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 pt-1">
+                  <span
+                    className={`text-xxs text-gray-500 pt-1 transition-all duration-300 ${
+                      isMobile
+                        ? isVisible
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 translate-y-2"
+                        : "opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0"
+                    }`}
+                  >
                     {tech}
                   </span>
                 </div>
@@ -110,7 +195,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           </div>
 
           {/* Buttons */}
-          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-4">
+          <div
+            className={`mt-4 transition-opacity duration-300 ${
+              isMobile
+                ? isVisible
+                  ? "opacity-100"
+                  : "opacity-0"
+                : "opacity-0 group-hover:opacity-100"
+            }`}
+          >
             <div className="mt-2 flex space-x-2">
               <a href={githubUrl} target="_blank" rel="noopener noreferrer">
                 <Button
@@ -133,22 +226,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 </a>
               )}
             </div>
-          </div>
-        </div>
-
-        {/* Video Container */}
-        <div className="relative w-[500px] rounded-xl overflow-hidden shadow-md">
-          <div className="aspect-video">
-            {" "}
-            <video
-              ref={videoRef}
-              className="w-full h-full object-cover transition-transform duration-500 ease-in-out transform group-hover:scale-105"
-              muted
-              playsInline
-              loop
-            >
-              <source src={videoUrl} type="video/mp4" />
-            </video>
           </div>
         </div>
       </div>

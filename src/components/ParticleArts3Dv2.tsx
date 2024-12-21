@@ -16,7 +16,7 @@ import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPa
 interface ParticleArtsProps {
   particleCount?: number;
   connectionCount?: number;
-  style?: React.CSSProperties;
+  className?: string;
   onComplete?: () => void; // New: Callback when transition is complete
 }
 
@@ -169,7 +169,7 @@ const easeOutQuad = (t: number) => t * (2 - t);
 const ParticleArts3D: React.FC<ParticleArtsProps> = ({
   particleCount = 200,
   connectionCount = 75,
-  style = {},
+  className,
   onComplete, // Destructure onComplete from props
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -177,22 +177,24 @@ const ParticleArts3D: React.FC<ParticleArtsProps> = ({
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-
+    const isMobile = window.innerWidth <= 768;
     // Initialize renderer
     const scene = new THREE.Scene();
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setPixelRatio(window.devicePixelRatio); // Higher resolution
     container.appendChild(renderer.domElement);
 
     // Initialize camera
     const camera = new THREE.PerspectiveCamera(
-      60, // Field of View
+      60,
       container.clientWidth / container.clientHeight,
       1,
       1000
     );
-    camera.position.z = 400; // Moved back for larger area
+    camera.position.z = isMobile ? 500 : 400; // Reduced distance on mobile
+  
+    
 
     // Initialize post-processing
     const composer = new EffectComposer(renderer);
@@ -201,9 +203,9 @@ const ParticleArts3D: React.FC<ParticleArtsProps> = ({
 
     const bloomPass = new UnrealBloomPass(
       new THREE.Vector2(container.clientWidth, container.clientHeight),
-      1.5, // strength
-      0.4, // radius
-      0.85 // threshold
+      1.2, // strength
+      0.3, // radius
+      0.9 // threshold
     );
     composer.addPass(bloomPass);
 
@@ -211,8 +213,8 @@ const ParticleArts3D: React.FC<ParticleArtsProps> = ({
     const particles: Particle[] = [];
     const connections: Connection[] = [];
     const center = new THREE.Vector3(0, 0, 0);
-    const targetRadius = 150; // Increased radius for larger area
-    const initialRadius = 20; // Small initial radius for the cluster
+    const targetRadius = isMobile ? 100 : 150; // Smaller radius on mobile
+    const initialRadius = isMobile ? 10 : 20;
 
     // Initialize particles
     for (let i = 0; i < particleCount; i++) {
@@ -236,7 +238,7 @@ const ParticleArts3D: React.FC<ParticleArtsProps> = ({
           p2.mesh.position.clone()
         );
 
-        const points = curve.getPoints(20); // Smooth curve
+        const points = curve.getPoints(10); // Smooth curve
         const positions: number[] = [];
         points.forEach((point) => {
           positions.push(point.x, point.y, point.z);
@@ -263,33 +265,25 @@ const ParticleArts3D: React.FC<ParticleArtsProps> = ({
       }
     }
 
-    // Handle window resize
-    const resizeRenderer = () => {
-      const width = container.clientWidth;
-      const height = container.clientHeight;
-      renderer.setSize(width, height);
-      renderer.setPixelRatio(window.devicePixelRatio); // Update pixel ratio
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-
-      // Update composer size
-      composer.setSize(width, height);
-
-      // Update bloom pass resolution
-      bloomPass.setSize(width, height);
-
-      // Update resolution for line materials
-      connections.forEach((connection) => {
-        const { line } = connection;
-        if (line && line.material) {
-          (line.material as LineMaterial).resolution.set(width, height);
-        }
-      });
-    };
-    window.addEventListener("resize", resizeRenderer);
-
     // Initial resize
-    resizeRenderer();
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setPixelRatio(window.devicePixelRatio); // Update pixel ratio
+    camera.aspect = container.clientWidth / container.clientHeight;
+    camera.updateProjectionMatrix();
+
+    // Update composer size
+    composer.setSize(container.clientWidth, container.clientHeight);
+
+    // Update bloom pass resolution
+    bloomPass.setSize(container.clientWidth, container.clientHeight);
+
+    // Update resolution for line materials
+    connections.forEach((connection) => {
+      const { line } = connection;
+      if (line && line.material) {
+        (line.material as LineMaterial).resolution.set(container.clientWidth, container.clientHeight);
+      }
+    });
 
     // Transition variables
     const initialClusterDuration = 1500;
@@ -386,7 +380,6 @@ const ParticleArts3D: React.FC<ParticleArtsProps> = ({
 
     // Cleanup on component unmount
     return () => {
-      window.removeEventListener("resize", resizeRenderer);
       renderer.dispose();
       composer.dispose();
       scene.traverse((object) => {
@@ -399,12 +392,7 @@ const ParticleArts3D: React.FC<ParticleArtsProps> = ({
   return (
     <div
       ref={containerRef}
-      style={{
-        position: "absolute",
-        width: "100%",
-        height: "100%",
-        ...style,
-      }}
+      className={`fixed top-0 left-0 w-full h-full ${className}`}
     />
   );
 };

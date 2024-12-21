@@ -1,6 +1,5 @@
 // App.tsx
-
-import React, { useState } from "react"; // Added useState import
+import React, { useState } from "react";
 import HeroSection from "./components/Hero";
 import Skills from "./components/Skills";
 import Navbar from "./components/NavBar";
@@ -24,14 +23,7 @@ const App: React.FC = () => {
           particleCount={200}
           connectionCount={75}
           onComplete={() => setIsTransitionComplete(true)} // Set state on completion
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            zIndex: 0,
-          }}
+          className="fixed inset-0 w-screen h-[100dvh] md:h-screen max-w-[100vw] overflow-hidden z-0"
         />
         <div
           className={`relative z-10 transition-opacity duration-1000 ${

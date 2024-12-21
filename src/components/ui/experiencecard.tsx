@@ -1,5 +1,5 @@
 // ExperienceCard.tsx
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Icon } from '@iconify/react';
 
@@ -83,8 +83,74 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   companyUrl,
   technologies,
 }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+
+  // Function to determine if the device is mobile based on viewport width
+  const checkIsMobile = () => {
+    if (typeof window !== "undefined") {
+      setIsMobile(window.innerWidth <= 768); // Adjust breakpoint as needed
+    }
+  };
+
+  useEffect(() => {
+    checkIsMobile();
+    window.addEventListener("resize", checkIsMobile);
+    return () => {
+      window.removeEventListener("resize", checkIsMobile);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isMobile || !cardRef.current) return;
+
+    const observerOptions = {
+      root: null, // viewport
+      rootMargin: "0px",
+      threshold: 0.5, // Adjust based on when you want to trigger
+    };
+
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        } else {
+          setIsVisible(false);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    observer.observe(cardRef.current);
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, [isMobile]);
+
+  // Hover handlers for desktop
+  const handleMouseEnter = () => {
+    if (!isMobile) {
+      setIsVisible(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (!isMobile) {
+      setIsVisible(false);
+    }
+  };
+
   return (
-    <div className="block w-full bg-black transition-all relative group container max-w-7xl mx-auto">
+    <div
+      ref={cardRef}
+      className="block w-full bg-black transition-all relative group container max-w-7xl mx-auto"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className="py-8 px-4">
         {/* Text Content */}
         <div className="flex flex-col space-y-2">
@@ -103,19 +169,38 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
           {/* Technologies Section */}
           <div className="flex flex-wrap mt-4 gap-x-4">
             {technologies.map((tech, index) => (
-              <div key={index} className="flex flex-col items-center group m-2">
+              <div
+                key={index}
+                className="flex flex-col items-center group m-2"
+              >
                 <Icon
                   icon={technologyIcons[tech]}
-                  className="w-9 h-9 mb-1 text-gray-500 group-hover:scale-110 transition-transform duration-300"
+                  className="w-9 h-9 mb-1 text-gray-500 transition-transform duration-300"
                 />
-                <span className="text-xxs text-gray-500 opacity-0 transform translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 pt-1">
+                <span
+                  className={`text-xxs text-gray-500 pt-1 transition-all duration-300 ${
+                    isMobile
+                      ? isVisible
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 translate-y-2"
+                      : "opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0"
+                  }`}
+                >
                   {tech}
                 </span>
               </div>
             ))}
           </div>
-          {/* Hover Button Below Text */}
-          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-4">
+          {/* Hover/Button Section */}
+          <div
+            className={`transition-opacity duration-300 mt-4 ${
+              isMobile
+                ? isVisible
+                  ? "opacity-100"
+                  : "opacity-0"
+                : "opacity-0 group-hover:opacity-100"
+            }`}
+          >
             <div className="mt-2">
               <a href={companyUrl} target="_blank" rel="noopener noreferrer">
                 <Button variant="default" size="sm" className="bg-white text-black">
