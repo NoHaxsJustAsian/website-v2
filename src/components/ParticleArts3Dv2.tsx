@@ -1,5 +1,3 @@
-// ParticleArts3D.tsx
-
 import React, { useRef, useEffect } from "react";
 import * as THREE from "three";
 import { Line2 } from "three/examples/jsm/lines/Line2.js";
@@ -28,7 +26,7 @@ class Particle {
   hue: number;
   targetPosition: THREE.Vector3;
   initialPosition: THREE.Vector3; // Store initial position
-  startPosition: THREE.Vector3; // Store position at transition start
+  startPosition: THREE.Vector3;   // Store position at transition start
 
   constructor(center: THREE.Vector3, initialRadius: number, targetRadius: number) {
     // Generate target position with uniform distribution within a sphere
@@ -63,9 +61,9 @@ class Particle {
     this.mesh.position.copy(this.initialPosition); // Start at initial position
 
     this.velocity = new THREE.Vector3(
-      (Math.random() * 2 - 1) * 1,
-      (Math.random() * 2 - 1) * 1,
-      (Math.random() * 2 - 1) * 1
+      (Math.random() * 2 - 1),
+      (Math.random() * 2 - 1),
+      (Math.random() * 2 - 1)
     );
     this.acceleration = new THREE.Vector3();
     this.hue = hue;
@@ -88,7 +86,7 @@ class Particle {
       // Override other forces and apply only the repelling force
       this.acceleration.copy(repellingForce);
     } else {
-      // Apply gravity towards the center and some randomness
+      // Apply gravity towards the center + randomness
       const dx = center.x - this.mesh.position.x;
       const dy = center.y - this.mesh.position.y;
       const dz = center.z - this.mesh.position.z;
@@ -99,7 +97,6 @@ class Particle {
         Math.random() * 0.05 - 0.025
       );
 
-      // Calculate acceleration due to gravity, randomness, and repelling force
       this.acceleration
         .set(dx * gravity, dy * gravity, dz * gravity)
         .add(randomness)
@@ -113,7 +110,6 @@ class Particle {
     // Boundary conditions
     const distanceFromCenter = center.distanceTo(this.mesh.position);
     if (distanceFromCenter > 180) {
-      // Increased boundary distance
       this.velocity.multiplyScalar(-0.7);
     }
 
@@ -135,6 +131,9 @@ class Connection {
   color: THREE.Color;
   line: Line2 | null;
   controlPoint: THREE.Vector3; // Fixed control point for stability
+
+  // NEW: Reuse a single curve instance
+  curve: QuadraticBezierCurve3;
 
   constructor(p1: Particle, p2: Particle) {
     this.p1 = p1;
@@ -159,6 +158,22 @@ class Connection {
           (Math.random() - 0.5) * 20
         )
       );
+
+    // Instantiate a single curve we can reuse
+    this.curve = new QuadraticBezierCurve3(
+      this.p1.mesh.position.clone(),
+      this.controlPoint.clone(),
+      this.p2.mesh.position.clone()
+    );
+  }
+
+  /**
+   * Update our existing curve's points instead of creating a new curve.
+   */
+  updateCurve() {
+    this.curve.v0.copy(this.p1.mesh.position);
+    this.curve.v1.copy(this.controlPoint);
+    this.curve.v2.copy(this.p2.mesh.position);
   }
 }
 
@@ -178,11 +193,16 @@ const ParticleArts3D: React.FC<ParticleArtsProps> = ({
     const container = containerRef.current;
     if (!container) return;
     const isMobile = window.innerWidth <= 768;
+
     // Initialize renderer
     const scene = new THREE.Scene();
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
+    const renderer = new THREE.WebGLRenderer({
+      antialias: true,
+      alpha: true,
+      powerPreference: "high-performance",
+    });
     renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setPixelRatio(window.devicePixelRatio); // Higher resolution
+    renderer.setPixelRatio(window.devicePixelRatio);
     container.appendChild(renderer.domElement);
 
     // Initialize camera
@@ -192,38 +212,38 @@ const ParticleArts3D: React.FC<ParticleArtsProps> = ({
       1,
       1000
     );
-    camera.position.z = isMobile ? 500 : 400; // Reduced distance on mobile
-  
-    
+    camera.position.z = isMobile ? 500 : 400;
 
     // Initialize post-processing
     const composer = new EffectComposer(renderer);
     const renderPass = new RenderPass(scene, camera);
     composer.addPass(renderPass);
 
+    // UnrealBloomPass
     const bloomPass = new UnrealBloomPass(
       new THREE.Vector2(container.clientWidth, container.clientHeight),
       1.2, // strength
       0.3, // radius
-      0.9 // threshold
+      0.9  // threshold
     );
     composer.addPass(bloomPass);
 
-    // Initialize particles and connections
+    // Particles + Connections
     const particles: Particle[] = [];
     const connections: Connection[] = [];
     const center = new THREE.Vector3(0, 0, 0);
-    const targetRadius = isMobile ? 100 : 150; // Smaller radius on mobile
+
+    const targetRadius = isMobile ? 100 : 150;
     const initialRadius = isMobile ? 10 : 20;
 
-    // Initialize particles
+    // Create particles
     for (let i = 0; i < particleCount; i++) {
       const particle = new Particle(center, initialRadius, targetRadius);
       particles.push(particle);
       scene.add(particle.mesh);
     }
 
-    // Initialize connections and lines
+    // Create connections + line objects
     for (let i = 0; i < connectionCount; i++) {
       const p1 = particles[Math.floor(Math.random() * particles.length)];
       const p2 = particles[Math.floor(Math.random() * particles.length)];
@@ -231,17 +251,11 @@ const ParticleArts3D: React.FC<ParticleArtsProps> = ({
         const connection = new Connection(p1, p2);
         connections.push(connection);
 
-        // Create a quadratic Bézier curve with fixed control point
-        const curve = new QuadraticBezierCurve3(
-          p1.mesh.position.clone(),
-          connection.controlPoint.clone(),
-          p2.mesh.position.clone()
-        );
-
-        const points = curve.getPoints(10); // Smooth curve
+        // Build line geometry once
+        const points = connection.curve.getPoints(10);
         const positions: number[] = [];
-        points.forEach((point) => {
-          positions.push(point.x, point.y, point.z);
+        points.forEach((pt) => {
+          positions.push(pt.x, pt.y, pt.z);
         });
 
         const lineGeometry = new LineGeometry();
@@ -249,51 +263,46 @@ const ParticleArts3D: React.FC<ParticleArtsProps> = ({
 
         const lineMaterial = new LineMaterial({
           color: connection.color.getHex(),
-          linewidth: 2.5, // Reduced linewidth for less thickness
+          linewidth: 2.5,
           transparent: true,
           opacity: 0.6,
-          depthTest: true, // Ensures proper rendering
-          blending: THREE.AdditiveBlending, // Additive blending for glow
+          depthTest: true,
+          blending: THREE.AdditiveBlending,
         });
         lineMaterial.resolution.set(container.clientWidth, container.clientHeight);
 
         const line = new Line2(lineGeometry, lineMaterial);
-        line.computeLineDistances(); // Important for proper rendering
+        line.computeLineDistances();
         scene.add(line);
 
         connection.line = line;
       }
     }
 
-    // Initial resize
+    // Handle initial resizing
     renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setPixelRatio(window.devicePixelRatio); // Update pixel ratio
+    renderer.setPixelRatio(window.devicePixelRatio);
     camera.aspect = container.clientWidth / container.clientHeight;
     camera.updateProjectionMatrix();
-
-    // Update composer size
     composer.setSize(container.clientWidth, container.clientHeight);
-
-    // Update bloom pass resolution
     bloomPass.setSize(container.clientWidth, container.clientHeight);
 
-    // Update resolution for line materials
-    connections.forEach((connection) => {
-      const { line } = connection;
-      if (line && line.material) {
-        (line.material as LineMaterial).resolution.set(container.clientWidth, container.clientHeight);
+    connections.forEach((conn) => {
+      if (conn.line && conn.line.material) {
+        (conn.line.material as LineMaterial).resolution.set(
+          container.clientWidth,
+          container.clientHeight
+        );
       }
     });
 
-    // Transition variables
+    // Transition timings
     const initialClusterDuration = 1500;
-    const transitionDuration = 500; 
+    const transitionDuration = 500;
     const transitionRef = {
       startTime: performance.now(),
       done: false,
     };
-
-    // Flag to capture start positions once
     let transitionStartPositionsCaptured = false;
 
     // Animation loop
@@ -302,17 +311,15 @@ const ParticleArts3D: React.FC<ParticleArtsProps> = ({
       const elapsedTime = currentTime - transitionRef.startTime;
 
       if (elapsedTime < initialClusterDuration) {
-        // Initial Cluster Phase
+        // Phase 1: initial cluster
         particles.forEach((particle) => {
-          const repellingForce = new THREE.Vector3(0, 0, 0);
-          const overrideForces = false;
-          particle.update(center, repellingForce, overrideForces);
+          particle.update(center, new THREE.Vector3(0, 0, 0), false);
         });
       } else if (
         elapsedTime >= initialClusterDuration &&
         elapsedTime < initialClusterDuration + transitionDuration
       ) {
-        // Transition Phase
+        // Phase 2: transition
         if (!transitionStartPositionsCaptured) {
           particles.forEach((particle) => {
             particle.startPosition.copy(particle.mesh.position);
@@ -321,64 +328,57 @@ const ParticleArts3D: React.FC<ParticleArtsProps> = ({
         }
 
         const transitionElapsed = elapsedTime - initialClusterDuration;
-        const progress = easeOutQuad(
-          Math.min(transitionElapsed / transitionDuration, 1)
-        );
+        const progress = easeOutQuad(Math.min(transitionElapsed / transitionDuration, 1));
 
         particles.forEach((particle) => {
-          const newPosition = particle.startPosition
-            .clone()
-            .lerp(particle.targetPosition, progress);
+          const newPosition = particle.startPosition.clone().lerp(particle.targetPosition, progress);
           particle.mesh.position.copy(newPosition);
         });
       } else if (
         elapsedTime >= initialClusterDuration + transitionDuration &&
         !transitionRef.done
       ) {
-        // Transition Complete
+        // Phase 3: transition complete
         particles.forEach((particle) => {
           particle.mesh.position.copy(particle.targetPosition);
         });
         transitionRef.done = true;
-        if (onComplete) onComplete(); // Invoke the callback
+        if (onComplete) onComplete();
       } else {
-        // Normal Update Phase
+        // Phase 4: normal update
         particles.forEach((particle) => {
-          const repellingForce = new THREE.Vector3(0, 0, 0);
-          const overrideForces = false;
-          particle.update(center, repellingForce, overrideForces);
+          particle.update(center, new THREE.Vector3(0, 0, 0), false);
         });
       }
 
-      // Update connections (lines)
+      // Update connections
       connections.forEach((connection) => {
-        const { p1, p2, line, controlPoint } = connection;
+        const { line } = connection;
         if (line) {
-          const curve = new QuadraticBezierCurve3(
-            p1.mesh.position.clone(),
-            controlPoint.clone(),
-            p2.mesh.position.clone()
-          );
+          // Reuse existing curve instead of creating a new one
+          connection.updateCurve();
 
-          const points = curve.getPoints(20);
+          // Get updated curve points
+          const points = connection.curve.getPoints(20);
           const positions: number[] = [];
-          points.forEach((point) => {
-            positions.push(point.x, point.y, point.z);
+          points.forEach((pt) => {
+            positions.push(pt.x, pt.y, pt.z);
           });
 
+          // Update geometry
           (line.geometry as LineGeometry).setPositions(positions);
           line.computeLineDistances();
           (line.material as LineMaterial).needsUpdate = true;
         }
       });
 
-      // Render the scene with post-processing
+      // Render with post-processing
       composer.render();
       requestAnimationFrame(animate);
     };
     animate();
 
-    // Cleanup on component unmount
+    // Cleanup on unmount
     return () => {
       renderer.dispose();
       composer.dispose();
@@ -387,7 +387,7 @@ const ParticleArts3D: React.FC<ParticleArtsProps> = ({
         if ((object as any).material) (object as any).material.dispose();
       });
     };
-  }, [particleCount, connectionCount, onComplete]); // Added onComplete to dependencies
+  }, [particleCount, connectionCount, onComplete]);
 
   return (
     <div
