@@ -280,6 +280,7 @@ const ParticleArts3D: React.FC<ParticleArtsProps> = ({
             container.clientHeight
           );
         }
+        
       });
     }
     }
