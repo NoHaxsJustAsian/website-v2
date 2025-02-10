@@ -63,7 +63,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
         <motion.div
           className={`flex justify-between items-center w-full max-w-[90rem] mx-auto gap-6 rounded-full ${
             scrolled
-              ? "backdrop-blur-lg bg-white bg-opacity-10"
+              ? "backdrop-blur-md bg-white/[0.07]"
               : "bg-transparent"
           } p-4 px-4 sm:px-6 lg:px-8 transition-colors duration-300`}
           layout

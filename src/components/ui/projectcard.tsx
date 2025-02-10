@@ -21,6 +21,10 @@ import pythonIcon from "@iconify/icons-logos/python";
 import flaskIcon from "@iconify/icons-skill-icons/flask-light";
 import nextIcon from "@iconify/icons-skill-icons/nextjs-dark";
 import threejsIcon from "@iconify/icons-skill-icons/threejs-light";
+import supabaseIcon from '@iconify/icons-devicon/supabase';
+import githubIcon from '@iconify/icons-mdi/github';
+import devpostIcon from '@iconify/icons-simple-icons/devpost';
+import websiteIcon from '@iconify/icons-mdi/web';
 
 interface ProjectCardProps {
   year: number;
@@ -29,6 +33,7 @@ interface ProjectCardProps {
   videoUrl: string;
   githubUrl: string;
   liveUrl?: string;
+  devPostUrl?: string;
   technologies: string[];
 }
 
@@ -50,6 +55,7 @@ const technologyIcons: { [key: string]: any } = {
   Flask: flaskIcon,
   "Next.js": nextIcon,
   "Three.js": threejsIcon,
+  Supabase: supabaseIcon,
 };
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -59,6 +65,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   videoUrl,
   githubUrl,
   liveUrl,
+  devPostUrl,
   technologies,
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -204,13 +211,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 : "opacity-0 group-hover:opacity-100"
             }`}
           >
-            <div className="mt-2 flex space-x-2">
+            <div className="mt-2 flex space-x-3">
               <a href={githubUrl} target="_blank" rel="noopener noreferrer">
                 <Button
                   variant="default"
                   size="sm"
-                  className="bg-white text-black"
+                  className="bg-transparent border border-white/20 text-white hover:bg-white/10 transition-all duration-300 flex items-center gap-2"
                 >
+                  <Icon icon={githubIcon} className="w-4 h-4" />
                   GitHub
                 </Button>
               </a>
@@ -219,9 +227,22 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                   <Button
                     variant="default"
                     size="sm"
-                    className="bg-white text-black"
+                    className="bg-transparent border border-white/20 text-white hover:bg-white/10 transition-all duration-300 flex items-center gap-2"
                   >
+                    <Icon icon={websiteIcon} className="w-4 h-4" />
                     Live
+                  </Button>
+                </a>
+              )}
+              {devPostUrl && (
+                <a href={devPostUrl} target="_blank" rel="noopener noreferrer">
+                  <Button
+                    variant="default"
+                    size="sm"
+                    className="bg-transparent border border-white/20 text-white hover:bg-white/10 transition-all duration-300 flex items-center gap-2"
+                  >
+                    <Icon icon={devpostIcon} className="w-4 h-4" />
+                    DevPost
                   </Button>
                 </a>
               )}

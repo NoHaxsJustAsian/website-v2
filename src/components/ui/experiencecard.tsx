@@ -33,6 +33,7 @@ import sklearnIcon from '@iconify/icons-devicon/scikitlearn';
 import dockerIcon from '@iconify/icons-logos/docker-icon';
 import lispIcon from '@iconify/icons-file-icons/common-lisp';
 import vueIcon from '@iconify/icons-logos/vue';
+import websiteIcon from '@iconify/icons-mdi/web';
 
 interface ExperienceCardProps {
   year: string;
@@ -203,7 +204,12 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
           >
             <div className="mt-2">
               <a href={companyUrl} target="_blank" rel="noopener noreferrer">
-                <Button variant="default" size="sm" className="bg-white text-black">
+                <Button 
+                  variant="default" 
+                  size="sm" 
+                  className="bg-transparent border border-white/20 text-white hover:bg-white/10 transition-all duration-300 flex items-center gap-2"
+                >
+                  <Icon icon={websiteIcon} className="w-4 h-4" />
                   Website
                 </Button>
               </a>

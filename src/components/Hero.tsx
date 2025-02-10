@@ -39,7 +39,7 @@ const HeroSection: React.FC = () => {
           pointerEvents: 'none',
         }}
       ></motion.div>
-      <div className="container max-w-7xl mx-auto relative z-20 flex flex-col justify-end h-full pb-6 text-left">
+      <div className="container max-w-7xl mx-auto relative z-20 flex flex-col justify-end h-full pb-12 text-left">
         <h1 className="text-5xl font-semibold leading-tight text-white flex items-center">
           <motion.span style={{ opacity: textOpacity, x: textX }}>
             Hi, I'm{' '}
@@ -50,50 +50,72 @@ const HeroSection: React.FC = () => {
               className="flex items-center cursor-pointer ml-5"
               style={{ opacity: textOpacity, x: textX }}
             >
-              <HoverCard openDelay={100} closeDelay={100}>
+              <HoverCard openDelay={50} closeDelay={50}>
                 <HoverCardTrigger asChild>
-                  <div className="flex items-center cursor-pointer">
-                    <Avatar className="w-12 h-12 mr-4">
-                      <AvatarImage
-                        src="https://github.com/nohaxsjustasian.png"
-                        alt="@nohaxsjustasian"
-                      />
-                      <AvatarFallback>NA</AvatarFallback>
-                    </Avatar>
-                    <span>Win.</span>
-                  </div>
+                  <motion.div 
+                    className="flex items-center cursor-pointer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 500, damping: 20 }}
+                  >
+                    <motion.div
+                      whileHover={{ rotate: 10 }}
+                      transition={{ type: "spring", stiffness: 500, damping: 20 }}
+                    >
+                      <Avatar className="w-12 h-12 mr-4">
+                        <AvatarImage
+                          src="https://github.com/nohaxsjustasian.png"
+                          alt="@nohaxsjustasian"
+                        />
+                        <AvatarFallback>NA</AvatarFallback>
+                      </Avatar>
+                    </motion.div>
+                    <motion.span
+                      whileHover={{ y: -2 }}
+                      transition={{ type: "spring", stiffness: 500, damping: 20 }}
+                    >
+                      Win.
+                    </motion.span>
+                  </motion.div>
                 </HoverCardTrigger>
-                <HoverCardContent className="w-80 p-4" side="top" align="start">
-                  <div className="flex space-x-4">
-                    <Avatar className="w-12 h-12">
-                      <AvatarImage
-                        src="https://github.com/nohaxsjustasian.png"
-                        alt="@nohaxsjustasian"
-                      />
-                      <AvatarFallback>NA</AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <h4 className="text-sm font-semibold">Tunwa (Win) Tongtawee</h4>
-                      <h4 className="text-sm font-semibold">
-                        <a
-                          href="https://github.com/nohaxsjustasian"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          @nohaxsjustasian
-                        </a>
-                      </h4>
-                      <p className="text-sm text-muted-foreground">
-                        NEU 25' | Searching for new grad SWE positions.
-                      </p>
-                      <div className="flex items-center mt-2">
-                        <CalendarIcon className="mr-2 h-4 w-4 text-gray-500" />
-                        <span className="text-xs text-muted-foreground">
-                          Joined December 2021
-                        </span>
+                <HoverCardContent className="w-80 p-4" side="top" align="start" asChild>
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                  >
+                    <div className="flex space-x-4">
+                      <Avatar className="w-12 h-12">
+                        <AvatarImage
+                          src="https://github.com/nohaxsjustasian.png"
+                          alt="@nohaxsjustasian"
+                        />
+                        <AvatarFallback>NA</AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <h4 className="text-sm font-semibold">Tunwa (Win) Tongtawee</h4>
+                        <h4 className="text-sm font-semibold">
+                          <a
+                            href="https://github.com/nohaxsjustasian"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            @nohaxsjustasian
+                          </a>
+                        </h4>
+                        <p className="text-sm text-muted-foreground">
+                          NEU 25' | Searching for new grad SWE positions.
+                        </p>
+                        <div className="flex items-center mt-2">
+                          <CalendarIcon className="mr-2 h-4 w-4 text-gray-500" />
+                          <span className="text-xs text-muted-foreground">
+                            Joined December 2021
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 </HoverCardContent>
               </HoverCard>
             </motion.div>

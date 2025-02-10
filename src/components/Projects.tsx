@@ -6,6 +6,16 @@ const Projects: React.FC = () => {
   const projects = [
     {
       year: 2024,
+      title: "throw-a-pin.com",
+      description: "Take a chance and find your next favorite location.",
+      videoUrl: "./throwapin.mp4",
+      liveUrl: "https://www.throwapin.com",
+      devPostUrl: "https://devpost.com/software/throw-a-pin",
+      githubUrl: "https://github.com/NoHaxsJustAsian/throw-a-pin",
+      technologies: ['TypeScript', 'React', 'Tailwind CSS', 'Three.js', 'Supabase']
+    },
+    {
+      year: 2024,
       title: "GenSchedule.com",
       description: "Screenshot any schedule to produce an downloadable ICS.",
       videoUrl: "./genschedule.mp4",
@@ -25,7 +35,7 @@ const Projects: React.FC = () => {
     {
       year: 2024,
       title: "Personal Website v2",
-      description: "This website you are currently on. The breathing scribble is inspired by Virtual Self (Porter Robinson).",
+      description: "This website you are currently on.",
       videoUrl: "./portfolio.mp4",
       liveUrl: "https://wintongtawee.dev",
       githubUrl: "https://github.com/NoHaxsJustAsian/website-v2",

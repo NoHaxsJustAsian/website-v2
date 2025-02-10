@@ -9,7 +9,7 @@ const Experience: React.FC = () => {
       role: "Full Stack Software Engineer",
       company: "Ubiwell Lab",
       description:
-        'Built and maintained iOS sensing app, "Ubiwell Connect", admin and user facing dashboards, RESTful APIs, and data processing pipelines used for digital phenotyping studies. Spearheaded the refactoring of the iOS app leading to a 40% reduction in the code base.',
+        'Built and maintained iOS sensing app, "Ubiwell Connect", admin and user facing dashboards, RESTful APIs, and ML data processing pipelines used for digital phenotyping studies.',
       imageUrl: "https://example.com/images/techcorp-logo.jpg",
       companyUrl: "https://ubiwell.io/",
       technologies: ["Swift", "Python","TypeScript", "JavaScript", "Vue.js", "Flask", "SKlearn", "Pandas","NumPy","MongoDB"],
