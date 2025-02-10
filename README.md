@@ -1,6 +1,7 @@
 # Tunwa (Win) Tongtawee's Personal Website
 
-The website is available at [wintongtawee.dev](www.wintongtawee.dev)
+The website is available at [wintongtawee.dev](https://www.wintongtawee.dev)
+
 
 # Built with
 
