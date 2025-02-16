@@ -6,7 +6,7 @@ const Projects: React.FC = () => {
   const projects = [
     {
       year: 2024,
-      title: "throw-a-pin.com",
+      title: "throwapin.com",
       description: "Take a chance and find your next favorite location.",
       videoUrl: "./throwapin.mp4",
       liveUrl: "https://www.throwapin.com",
@@ -26,7 +26,7 @@ const Projects: React.FC = () => {
     {
       year: 2024,
       title: "RecieptOCR.com",
-      description: "Take a photo of reciept to immediately parse and sync it to your Notion page.",
+      description: "Take a photo of receipt to immediately parse and sync it to your Notion page.",
       videoUrl: "./recieptocr.mp4",
       liveUrl: "https://recieptocr.com",
       githubUrl: "https://github.com/NoHaxsJustAsian/receipt-ocr-to-notion",
