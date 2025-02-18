@@ -17,7 +17,7 @@ const Projects: React.FC = () => {
     {
       year: 2024,
       title: "GenSchedule.com",
-      description: "Screenshot any schedule to produce an downloadable ICS.",
+      description: "Screenshot any schedule to produce a downloadable ICS.",
       videoUrl: "./genschedule.mp4",
       liveUrl: "https://genschedule.com",
       githubUrl: "https://github.com/NoHaxsJustAsian/genschedule",
