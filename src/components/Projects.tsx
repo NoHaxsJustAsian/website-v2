@@ -5,7 +5,7 @@ import ProjectCard from '@/components/ui/projectcard';
 const Projects: React.FC = () => {
   const projects = [
     {
-      year: 2024,
+      year: 2025,
       title: "throwapin.com",
       description: "Take a chance and find your next favorite location.",
       videoUrl: "./throwapin.mp4",

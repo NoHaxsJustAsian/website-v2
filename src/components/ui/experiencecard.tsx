@@ -155,9 +155,9 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
       <div className="py-8 px-4">
         {/* Text Content */}
         <div className="flex flex-col space-y-2">
-          <p className="text-sm text-gray-600">{year}</p>
+          {year && <p className="text-sm text-gray-600">{year}</p>}
           <h2 className="text-2xl font-semibold text-white">{role}</h2>
-          <h3 className="text-lg text-gray-400">{company}</h3>
+          {company && <h3 className="text-lg text-gray-400">{company}</h3>}
           {Array.isArray(description) ? (
             <ul className="list-disc list-inside text-gray-300">
               {description.map((point, index) => (

@@ -5,7 +5,6 @@ import {
   HoverCardContent,
 } from "@/components/ui/hover-card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { CalendarIcon } from "@radix-ui/react-icons";
 import { motion, useTransform } from 'framer-motion';
 import { useScrollContext } from '@/components/ScrollContext';
 
@@ -78,7 +77,7 @@ const HeroSection: React.FC = () => {
                     </motion.span>
                   </motion.div>
                 </HoverCardTrigger>
-                <HoverCardContent className="w-80 p-4" side="top" align="start" asChild>
+                <HoverCardContent className="w-80 p-4 bg-black/90 backdrop-blur-xl border border-gray-700 shadow-xl" side="top" align="start" asChild>
                   <motion.div
                     initial={{ opacity: 0, scale: 0.95, y: 20 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -107,12 +106,6 @@ const HeroSection: React.FC = () => {
                         <p className="text-sm text-muted-foreground">
                           NEU 25' | Searching for new grad SWE positions.
                         </p>
-                        <div className="flex items-center mt-2">
-                          <CalendarIcon className="mr-2 h-4 w-4 text-gray-500" />
-                          <span className="text-xs text-muted-foreground">
-                            Joined December 2021
-                          </span>
-                        </div>
                       </div>
                     </div>
                   </motion.div>

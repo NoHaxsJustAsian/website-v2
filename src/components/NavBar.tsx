@@ -6,13 +6,13 @@ import {
 } from "@/components/ui/hover-card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import {
-  CalendarIcon,
   ChevronUpIcon,
   GitHubLogoIcon,
   LinkedInLogoIcon,
 } from "@radix-ui/react-icons";
 import { motion, AnimatePresence } from "framer-motion";
 import { useScrollContext } from "@/components/ScrollContext";
+import { TwitterLogoIcon } from "@radix-ui/react-icons";
 
 interface NavbarProps {
   onNavigate: (section: string) => void;
@@ -78,7 +78,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             >
               <HoverCard openDelay={100} closeDelay={100}>
                 <HoverCardTrigger asChild>
-                  <div>
+                  <div className="flex items-center">
                     <Avatar className="w-10 h-10 cursor-pointer">
                       <AvatarImage
                         src="https://github.com/nohaxsjustasian.png"
@@ -86,44 +86,51 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
                       />
                       <AvatarFallback>NA</AvatarFallback>
                     </Avatar>
+                    <span className="ml-2">Win.</span>
                   </div>
                 </HoverCardTrigger>
-                <HoverCardContent className="w-80 p-4">
-                  <div className="flex space-x-4">
-                    <Avatar className="w-12 h-12">
-                      <AvatarImage
-                        src="https://github.com/nohaxsjustasian.png"
-                        alt="@nohaxsjustasian"
-                      />
-                      <AvatarFallback>NA</AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <h4 className="text-sm font-semibold">
-                        Tunwa (Win) Tongtawee
-                      </h4>
-                      <h4 className="text-sm font-semibold">
-                        <a
-                          href="https://github.com/nohaxsjustasian"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          @nohaxsjustasian
-                        </a>
-                      </h4>
-                      <p className="text-sm text-muted-foreground">
-                        NEU 25' | Searching for new grad SWE positions.
-                      </p>
-                      <div className="flex items-center mt-2">
-                        <CalendarIcon className="mr-2 h-4 w-4 text-gray-500" />
-                        <span className="text-xs text-muted-foreground">
-                          Joined December 2021
-                        </span>
+                <HoverCardContent 
+                  className="w-80 p-4 bg-black/90 backdrop-blur-xl border border-gray-700 shadow-xl"
+                  side="bottom"
+                  align="start"
+                  sideOffset={5}
+                  asChild
+                >
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95, y: -10 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95, y: -10 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                  >
+                    <div className="flex space-x-4">
+                      <Avatar className="w-12 h-12">
+                        <AvatarImage
+                          src="https://github.com/nohaxsjustasian.png"
+                          alt="@nohaxsjustasian"
+                        />
+                        <AvatarFallback>NA</AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <h4 className="text-sm font-semibold">
+                          Tunwa (Win) Tongtawee
+                        </h4>
+                        <h4 className="text-sm font-semibold">
+                          <a
+                            href="https://github.com/nohaxsjustasian"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            @nohaxsjustasian
+                          </a>
+                        </h4>
+                        <p className="text-sm text-muted-foreground">
+                          NEU 25' | Searching for new grad SWE positions.
+                        </p>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 </HoverCardContent>
               </HoverCard>
-              <span className="ml-2">Win.</span>
             </motion.div>
 
             <motion.nav
@@ -186,6 +193,14 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
                     className="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-white transition-colors"
                   >
                     <LinkedInLogoIcon className="h-6 w-6" />
+                  </a>
+                  <a
+                    href="https://x.com/nohaxsjustasian"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-white transition-colors"
+                  >
+                    <TwitterLogoIcon className="h-6 w-6" />
                   </a>
                 </motion.div>
               )}
