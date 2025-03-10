@@ -5,13 +5,31 @@ import ExperienceCard from "@/components/ui/experiencecard";
 const Experience: React.FC = () => {
   const experiences = [
     {
+      year: "Feb 2025 - Present",
+      role: "Full Stack Developer",
+      company: "Memenome",
+      description: "Turn PDFs into brainrot videos. Supercharge your learning with engaging content. Led iOS development, and contributed to frontend + UX/UX development of web app.",
+      imageUrl: "/memenome.png",
+      companyUrl: "https://memenome.gg/",
+      technologies: ["TypeScript", "Svelte", "SvelteKit", "Tailwind CSS", "Vite", "Node.js", "Swift"],
+    },
+    {
+      year: "Feb 2025 - Present",
+      role: "Full Stack Developer",
+      company: "Pagent",
+      description: "Developing a social gaming platform for users to compete in against each other in social competitions. Led web development + mobile development.",
+      imageUrl: "/pagent.png",
+      companyUrl: "https://pagent.tv/",
+      technologies: ["TypeScript", "React", "React Native", "Tailwind CSS", "Node.js", "Express", "MongoDB"],
+    },
+    {
       year: "Jan 2025 - Present",
       role: "Teaching Assistant",
       company: "Northeastern University",
       description: "Fundmentals of Software Engineering (CS 4530).",
       imageUrl: "/NEU.png",
       companyUrl: "https://www.northeastern.edu/",
-      technologies: ["TypeScript", "React", "MongoDB"],
+      technologies: ["TypeScript", "React", "Tailwind CSS", "Node.js", "Express", "MongoDB"],
     },
     {
       year: "Jan 2025 - Present",
@@ -20,7 +38,7 @@ const Experience: React.FC = () => {
       description: "Developing a \"Cursor for Writing\" document editor tool, similar to Google Docs, to evaluate how writers and researchers can use LLM tools to potentially increase their cohesion and coherence across their writing.",
       imageUrl: "/ubiwell.png",
       companyUrl: "https://ubiwell.io/",
-      technologies: ["TypeScript", "React", "Python", "Flask", "MongoDB"],
+      technologies: ["TypeScript", "React", "Tailwind CSS", "Python", "Flask", "MongoDB"],
     },
     {
       year: "Jun 2024 - Dec 2024",
@@ -30,17 +48,17 @@ const Experience: React.FC = () => {
         'Built and maintained iOS sensing app, "Ubiwell Connect", along with admin dashboards, RESTful APIs, and ML data processing pipelines for digital phenotyping studies.',
       imageUrl: "/ubiwell.png",
       companyUrl: "https://ubiwell.io/",
-      technologies: ["Swift", "Python","TypeScript", "JavaScript", "Vue.js", "Flask", "SKlearn", "Pandas","NumPy","MongoDB"],
+      technologies: ["TypeScript", "JavaScript", "Vue.js", "Tailwind CSS", "Python", "Flask", "MongoDB", "Pandas", "NumPy", "SKlearn", "Swift"],
     },
     {
-      year: "2023 - Present",
+      year: "Jan 2023 - Present",
       role: "Computer Science Curricula Lead, Brand and Marketing Lead",
       company: "FirstByte",
       description:
         "Led the curriculum team for the Computer Science program, building 5 different workshops, spanning from Python/ML to React. Led the marketing team in managing the club's social media presence and recruitment efforts, leading to a 200% increase in membership.",
       imageUrl: "/FirstByte.png",
       companyUrl: "https://teachfirstbyte.com",
-      technologies: ["Python", "JavaScript", "HTML", "CSS", "React"],
+      technologies: ["JavaScript", "React", "HTML", "CSS", "Tailwind CSS", "Python"],
     },
   ];
 

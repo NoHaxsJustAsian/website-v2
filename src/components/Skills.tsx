@@ -33,6 +33,10 @@ import lispIcon from '@iconify/icons-file-icons/common-lisp';
 import nextIcon from '@iconify/icons-skill-icons/nextjs-dark';
 import vueIcon from '@iconify/icons-logos/vue';
 import threejsIcon from '@iconify/icons-skill-icons/threejs-light';
+import svelteIcon from '@iconify/icons-logos/svelte-icon';
+import svelteKitIcon from '@iconify/icons-skill-icons/svelte';
+import viteIcon from '@iconify/icons-logos/vitejs';
+import expressIcon from '@iconify/icons-skill-icons/expressjs-light';
 
 export const languages = [
   { icon: swiftIcon, label: 'Swift' },
@@ -49,13 +53,18 @@ export const languages = [
 
 export const frameworksAndTools = [
   { icon: reactIcon, label: 'React' },
+  { icon: reactIcon, label: 'React Native' },
   { icon: nextIcon, label: 'Next.js' },
   { icon: vueIcon, label: 'Vue.js' },
+  { icon: svelteIcon, label: 'Svelte' },
+  { icon: svelteKitIcon, label: 'SvelteKit' },
   { icon: nodejsIcon, label: 'Node.js' },
+  { icon: viteIcon, label: 'Vite' },
   { icon: threejsIcon, label: 'Three.js' },
-  { icon: tailwindIcon, label: 'Tailwind' },
+  { icon: tailwindIcon, label: 'Tailwind CSS' },
   { icon: bootstrapIcon, label: 'Bootstrap' },
   { icon: flaskIcon, label: 'Flask' },
+  { icon: expressIcon, label: 'Express.js' },
   { icon: mongoDBIcon, label: 'MongoDB' },
   { icon: firebaseIcon, label: 'Firebase' },
   { icon: supabaseIcon, label: 'Supabase' },
@@ -97,6 +106,8 @@ const Skills: React.FC = () => {
                 <span
                   className="
                     text-lg 
+                    text-center
+                    w-full
                     opacity-100 translate-y-0 
                     md:opacity-0 md:translate-y-2 
                     group-hover:opacity-100 group-hover:translate-y-0 
@@ -126,6 +137,8 @@ const Skills: React.FC = () => {
                 <span
                   className="
                     text-lg 
+                    text-center
+                    w-full
                     opacity-100 translate-y-0 
                     md:opacity-0 md:translate-y-2 
                     group-hover:opacity-100 group-hover:translate-y-0 

@@ -34,6 +34,12 @@ import dockerIcon from '@iconify/icons-logos/docker-icon';
 import lispIcon from '@iconify/icons-file-icons/common-lisp';
 import vueIcon from '@iconify/icons-logos/vue';
 import websiteIcon from '@iconify/icons-mdi/web';
+// New icon imports
+import svelteIcon from '@iconify/icons-logos/svelte-icon';
+import svelteKitIcon from '@iconify/icons-skill-icons/svelte';
+import viteIcon from '@iconify/icons-logos/vitejs';
+import reactNativeIcon from '@iconify/icons-logos/react';
+import expressIcon from '@iconify/icons-skill-icons/expressjs-light';
 
 interface ExperienceCardProps {
   year: string;
@@ -73,7 +79,14 @@ const technologyIcons: { [key: string]: any } = {
   PyTorch: pytorchIcon,
   SKlearn: sklearnIcon,
   Lisp: lispIcon,
-  NodeJS: nodejsIcon,
+  'Node.js': nodejsIcon,
+  // New icons
+  Svelte: svelteIcon,
+  SvelteKit: svelteKitIcon,
+  'Tailwind CSS': tailwindIcon,
+  Vite: viteIcon,
+  'React Native': reactNativeIcon,
+  Express: expressIcon,
 };
 
 const ExperienceCard: React.FC<ExperienceCardProps> = ({

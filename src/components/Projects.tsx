@@ -6,6 +6,15 @@ const Projects: React.FC = () => {
   const projects = [
     {
       year: 2025,
+      title: "Supabase Compliance Checker",
+      description: "Check your Supabase database for compliance with your organization's policies.",
+      videoUrl: "./SCC.mp4",
+      liveUrl: "https://supabase-compliance-checker-nine.vercel.app/",
+      githubUrl: "https://github.com/NoHaxsJustAsian/supabase-compliance-checker",
+      technologies: ['TypeScript', 'React', 'Tailwind CSS', 'Supabase']
+    },
+    {
+      year: 2025,
       title: "throwapin.com",
       description: "Take a chance and find your next favorite location.",
       videoUrl: "./throwapin.mp4",
