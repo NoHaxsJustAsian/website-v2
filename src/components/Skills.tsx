@@ -78,6 +78,13 @@ export const frameworksAndTools = [
   { icon: dockerIcon, label: 'Docker' },
   { icon: latexDark, label: 'LaTeX' },
   { icon: linuxIcon, label: 'Linux' },
+  { icon: 'skill-icons:aws-light', label: 'AWS' },
+  { icon: 'logos:aws-ec2', label: 'AWS EC2' },
+  { icon: 'logos:aws-vpc', label: 'AWS VPC' },
+  { icon: 'logos:aws-iam', label: 'AWS IAM' },
+  { icon: 'logos:aws-s3', label: 'Amazon S3' },
+  { icon: 'logos:aws-secrets-manager', label: 'AWS SM' },
+  { icon: 'logos:aws-cloudwatch', label: 'AWS CW' },
 ];
 
 const Skills: React.FC = () => {

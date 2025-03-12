@@ -40,6 +40,8 @@ import svelteKitIcon from '@iconify/icons-skill-icons/svelte';
 import viteIcon from '@iconify/icons-logos/vitejs';
 import reactNativeIcon from '@iconify/icons-logos/react';
 import expressIcon from '@iconify/icons-skill-icons/expressjs-light';
+// AWS icon imports
+import awsIcon from '@iconify/icons-skill-icons/aws-light';
 
 interface ExperienceCardProps {
   year: string;
@@ -87,6 +89,14 @@ const technologyIcons: { [key: string]: any } = {
   Vite: viteIcon,
   'React Native': reactNativeIcon,
   Express: expressIcon,
+  'AWS': awsIcon,
+  'AWS EC2': 'logos:aws-ec2',
+  'AWS VPC': 'logos:aws-vpc',
+  'AWS IAM': 'logos:aws-iam',
+  'Amazon S3': 'logos:aws-s3',
+  'AWS Secrets Manager': 'logos:aws-secrets-manager',
+  'AWS SM': 'logos:aws-secrets-manager',
+  'AWS CW': 'logos:aws-cloudwatch',
 };
 
 const ExperienceCard: React.FC<ExperienceCardProps> = ({
